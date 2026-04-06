@@ -18,4 +18,17 @@ const handleGenerateShortURL = async (req, res) => {
     return res.json({ id: nanoID });
 };
 
-module.exports = handleGenerateShortURL;
+const handleGetAnalytics = async (req, res) => {
+    const shortId = req.params.shortId;
+    const result = await URL.findOne({ shortID: shortId });
+    if (!result) return res.status(404).json({ error: "URL not found" });
+    return res.json({
+        totalClicks: result.visitHistory.length,
+        analytics: result.visitHistory,
+    });
+};
+
+module.exports = {
+    handleGenerateShortURL,
+    handleGetAnalytics,
+};

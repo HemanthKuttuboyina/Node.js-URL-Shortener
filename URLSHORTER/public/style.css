@@ -1,0 +1,245 @@
+:root {
+    --bg-color: #f0f4f8; /* Soft light blue/gray background */
+    --text-primary: #102a43; /* Dark navy for high contrast readability */
+    --text-secondary: #486581; /* Muted navy */
+    --primary-color: #1864ab; /* Strong, clear monochromatic blue */
+    --primary-hover: #1971c2;
+    --card-bg: #ffffff;
+    --card-border: #d9e2ec;
+    --error-color: #d64545;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Hide the old decorative blobs to maintain a clean minimalistic look */
+.background-blobs {
+    display: none;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 2rem;
+    z-index: 1;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.glass-panel {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.glass-panel:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+@media (min-width: 480px) {
+    form {
+        flex-direction: row;
+    }
+}
+
+input {
+    flex: 1;
+    padding: 1rem 1.2rem;
+    background: #ffffff;
+    border: 1px solid #bcccdc;
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(24, 100, 171, 0.15);
+}
+
+button {
+    padding: 1rem 1.5rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+button:hover {
+    background: var(--primary-hover);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.hidden {
+    display: none !important;
+}
+
+#result-container {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--card-border);
+    animation: fadeIn 0.4s ease forwards;
+}
+
+.short-link-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+    padding: 1rem;
+    background: #f0f4f8;
+    border-radius: 8px;
+    border: 1px solid #bcccdc;
+}
+
+.short-link-box a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    word-break: break-all;
+    margin-right: 1rem;
+    transition: color 0.2s ease;
+}
+
+.short-link-box a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+#copy-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    background: #e2e8f0;
+    color: var(--text-primary);
+}
+
+#copy-btn.copied {
+    background: #d3f9d8;
+    color: #2b8a3e;
+}
+
+#copy-btn:hover {
+    background: #cbd5e1;
+}
+
+#copy-btn.copied:hover {
+    background: #b2f2bb;
+}
+
+.analytics-panel h2 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: 0.2rem;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+#analytics-result {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    animation: fadeIn 0.4s ease;
+}
+
+.stat-card {
+    background: #e7f5ff;
+    border: 1px solid #a5d8ff;
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    text-align: center;
+    min-width: 150px;
+}
+
+.stat-card h3 {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.stat-card p {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.error-text {
+    color: var(--error-color);
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}

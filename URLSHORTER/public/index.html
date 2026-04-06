@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickLink | Modern URL Shortener</title>
+    <meta name="description" content="A fast, modern URL shortener built with Node.js and Vanilla JS.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob shape1"></div>
+        <div class="blob shape2"></div>
+    </div>
+    
+    <main class="container">
+        <header>
+            <h1>QuickLink</h1>
+            <p>Shorten, share, and track your links effortlessly.</p>
+        </header>
+
+        <section class="glass-panel main-panel">
+            <form id="shorten-form">
+                <input type="url" id="long-url" placeholder="Paste your long URL here..." required>
+                <button type="submit" id="shorten-btn">
+                    <span>Shorten URL</span>
+                    <div class="spinner" id="shorten-spinner" style="display: none;"></div>
+                </button>
+            </form>
+
+            <div id="result-container" class="hidden">
+                <p>Your short link is ready:</p>
+                <div class="short-link-box">
+                    <a id="short-link" href="#" target="_blank"></a>
+                    <button id="copy-btn" title="Copy to clipboard">Copy</button>
+                </div>
+            </div>
+            <div id="error-message" class="hidden error-text"></div>
+        </section>
+
+        <section class="glass-panel analytics-panel">
+            <h2>Analytics</h2>
+            <p class="subtitle">Check clicks for any short URL</p>
+            <form id="analytics-form">
+                <input type="text" id="short-id" placeholder="Enter Short ID" required>
+                <button type="submit">View Stats</button>
+            </form>
+            <div id="analytics-result" class="hidden">
+                <div class="stat-card">
+                    <h3>Total Clicks</h3>
+                    <p id="total-clicks">0</p>
+                </div>
+            </div>
+            <div id="analytics-error" class="hidden error-text"></div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
